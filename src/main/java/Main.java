@@ -76,11 +76,61 @@ public class Main {
         }
     }
 
+    private static void loops() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Iteration (for) " + i);
+        }
 
+        int i = 0;
+        while (i < 10) {
+            System.out.println("Iteration (while) " + i);
+            i++;
+        }
+
+        i = 0;
+        do {
+            System.out.println("Iteration (do-while) " + i);
+            i++;
+        } while (i < 10);
+    }
+
+    private static void arrays() {
+        int[] arrayOfIntegers = {1,2,3,4};
+        OptionalDouble avg = Arrays.stream(arrayOfIntegers).average();
+        avg.ifPresent(
+                (double avgVal) -> System.out.printf("%s, %s%n\n", Arrays.toString(arrayOfIntegers), avgVal)
+        );
+
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);  // Set US locale to use colon in floats
+        System.out.println("Enter array shape (rows, cols): ");
+        String userInput = scanner.nextLine();
+        System.out.printf("User input \"%s\"\n", userInput);
+        String[] userArrayShape = userInput.split("\\s*,\\s*|\\s+");
+        System.out.println("Array (of strings) " + Arrays.toString(userArrayShape));
+        int rows = Integer.parseInt(userArrayShape[0]);
+        int cols = Integer.parseInt(userArrayShape[1]);
+        System.out.printf("User input: %d rows and %d cols\n\n", rows, cols);
+        System.out.println("Enter value to fill the array with: ");
+        float value = scanner.nextFloat();
+
+        float[][] array = new float[rows][cols];
+        for (int row = 0; row < rows; row++){
+            for (int col = 0; col < cols; col++){
+                array[row][col] = value;
+            }
+        }
+
+        System.out.println("Results: ");
+        for (int i = 0; i < rows; i++) {
+            System.out.println(Arrays.toString(array[i]));
+        }
+    }
 
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
 //        conditionals();
+//        loops();
+        arrays();
     }
 }
