@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.OptionalDouble;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static void dataPrimitives() {
@@ -126,11 +123,44 @@ public class Main {
         }
     }
 
+    private static void collections() {
+        Collection<String> names = new ArrayList<>();
+        int namesLen = 10;
+        StringBuilder currentName = new StringBuilder("John");
+        char[] letters = currentName.toString().toCharArray();
+        Random gen = new Random();
+        for (int i = 0; i < namesLen; i++) {
+            names.add(currentName.toString());
+            if (i + 1 < currentName.length()) {
+                char prevChar = currentName.charAt(i);
+                // Swap chars
+                currentName.setCharAt(i, currentName.charAt(i+1));
+                currentName.setCharAt(i+1, prevChar);
+            }
+            else {
+                int randomIndex = gen.nextInt(0, letters.length);
+                currentName.append(letters[randomIndex]);
+            }
+        }
+
+        for (String name : names) {
+            System.out.println(name);
+        }
+
+        Map<String, Integer> nameToAge = new HashMap<>();
+        for (String name : names) {
+            nameToAge.put(name, gen.nextInt(10, 30));
+        }
+
+        System.out.println(nameToAge);
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
 //        conditionals();
 //        loops();
-        arrays();
+//        arrays();
+        collections();
     }
 }
