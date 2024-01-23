@@ -1,3 +1,6 @@
+import oop.Car;
+import oop.Vehicle;
+
 import java.util.*;
 
 public class Main {
@@ -143,8 +146,13 @@ public class Main {
             }
         }
 
-        for (String name : names) {
-            System.out.println(name);
+        for (Iterator<String> iterator = names.iterator(); iterator.hasNext();) {
+            String name = iterator.next();
+            if (iterator.hasNext()) {
+                System.out.printf("%s, ", name);
+            } else {
+                System.out.println(name);
+            }
         }
 
         Map<String, Integer> nameToAge = new HashMap<>();
@@ -155,12 +163,20 @@ public class Main {
         System.out.println(nameToAge);
     }
 
+    private static void classesAndInterfaces(){
+        Vehicle car = new Car("Nissan", 200);
+        car.start();
+        car.start();
+        System.out.println(car.getSpeed());
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
 //        conditionals();
 //        loops();
 //        arrays();
-        collections();
+//        collections();
+        classesAndInterfaces();
     }
 }
