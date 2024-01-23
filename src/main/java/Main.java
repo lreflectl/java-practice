@@ -1,4 +1,5 @@
 import oop.Car;
+import oop.SportCar;
 import oop.Vehicle;
 
 import java.util.*;
@@ -167,7 +168,12 @@ public class Main {
         Vehicle car = new Car("Nissan", 200);
         car.start();
         car.start();
-        System.out.println(car.getSpeed());
+        System.out.println(car.getSpeed() + "\n");
+
+        Vehicle sportCar = new SportCar("F1", 300, 100);
+        sportCar.start();
+        sportCar.start();
+        System.out.println(sportCar.getSpeed());
     }
 
     public static void main(String[] args) {
