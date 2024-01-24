@@ -2,6 +2,8 @@ import oop.Car;
 import oop.SportCar;
 import oop.Vehicle;
 
+import java.io.*;
+import java.nio.CharBuffer;
 import java.util.*;
 
 public class Main {
@@ -11,8 +13,8 @@ public class Main {
         int num3 = 289000000;
         long num4 = 435_000_000_000L;
 
-        float num5 = 10.00f;
-        double num6 = 900.000d;
+        float num5 = 10.7f;
+        double num6 = 900.333;  // Default data type for decimals in Java is double
 
         char character = 'b';
         boolean isSome = true;
@@ -176,6 +178,53 @@ public class Main {
         System.out.println(sportCar.getSpeed());
     }
 
+    private static void files() {
+        File file = new File("src/main/resources/textFile.txt");
+        if (!file.exists()) {
+            try {
+                boolean isCreated = file.createNewFile();
+                if (isCreated) {
+                    System.out.println("Successfully created file!");
+                } else {
+                    System.out.println("Cannot create the file.");
+                    return;
+                }
+            } catch (IOException e) {
+                System.out.println("Exception occurred during file creation.");
+                return;
+            }
+        } else {
+            System.out.println("File already exists, skipping creation stage...");
+        }
+
+        String textToWrite = "Java Practice!\nHello World!";
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.write(textToWrite);
+            System.out.println("Wrote content to the file.");
+        } catch (IOException e) {
+            System.out.println("Cannot write to the file");
+            return;
+        }
+
+        System.out.println("Reading contents of the file:");
+        try (FileReader reader = new FileReader(file)) {
+            StringBuilder readText = new StringBuilder();
+            int charNum;
+            int lettersRead = 0;
+            while ((charNum = reader.read()) != -1) {
+                readText.append((char) charNum);
+                lettersRead++;
+            }
+
+            System.out.println(readText);
+            System.out.printf("Read %d letters from the file.", lettersRead);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        } catch (IOException e) {
+            System.out.println("Exception occurred during file read.");
+        }
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
@@ -183,6 +232,7 @@ public class Main {
 //        loops();
 //        arrays();
 //        collections();
-        classesAndInterfaces();
+//        classesAndInterfaces();
+        files();
     }
 }
