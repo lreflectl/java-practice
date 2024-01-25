@@ -225,6 +225,24 @@ public class Main {
         }
     }
 
+    private static void dynamicPolymorphism() {
+        Vehicle[] garage = new Vehicle[10];
+        int speed = 40;
+        String name = "Car";
+        for (int i = 0; i < garage.length; i++) {
+            if (i % 2 == 0) {
+                garage[i] = new Car(name+i, speed+i*10);
+            } else {
+                garage[i] = new SportCar("Sport"+name+i, speed+i*20, 100);
+            }
+        }
+
+        for (Vehicle vehicle: garage) {
+            vehicle.start();
+            System.out.println("Speed: " + vehicle.getSpeed());
+        }
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
@@ -233,6 +251,7 @@ public class Main {
 //        arrays();
 //        collections();
 //        classesAndInterfaces();
-        files();
+//        files();
+        dynamicPolymorphism();
     }
 }
