@@ -4,6 +4,7 @@ import oop.Vehicle;
 
 import java.io.*;
 import java.nio.CharBuffer;
+import java.time.Clock;
 import java.util.*;
 
 public class Main {
@@ -243,6 +244,51 @@ public class Main {
         }
     }
 
+    public static int partition(double[] A, int p, int q) {
+        double pivot = A[q];  // base element to compare others to
+        int i = p-1;  // idx of element that should be lower than pivot
+        for (int j = p; j < q; j++) {  // j is idx of current element
+            if (A[j] <= pivot) {  // check if j less than pivot and swap it with i
+                i++;
+                if (j != i) {  // Optimization to skip redundant swaps
+                    double tmp = A[i];
+                    A[i] = A[j];
+                    A[j] = tmp;
+                }
+            }
+        }
+        double tmp = A[i+1];  // put pivot after all lower elements found
+        A[i+1] = A[q];
+        A[q] = tmp;
+        return i + 1;  // return index of splitting element (first half <= the element < second half)
+    }
+
+    public static void quickSort(double[] A, int p, int q) {
+        if (p >= q) return;
+        int i = partition(A, p, q);
+        quickSort(A, p, i-1);
+        quickSort(A, i+1, q);
+    }
+
+    private static void sortingAlgorithms() {
+        int arrayLength = 1_000_000;
+        double[] arrayToSort = new double[arrayLength];
+        Random gen = new Random();
+        for (int i = 0; i < arrayLength; i++) {
+            arrayToSort[i] = gen.nextInt(-100, 100);
+        }
+
+        var startTimeMs = System.currentTimeMillis();
+
+        quickSort(arrayToSort, 0, arrayToSort.length-1);
+//        Arrays.sort(arrayToSort);
+
+        var timePassedMs = System.currentTimeMillis() - startTimeMs;
+
+        System.out.println(Arrays.toString(arrayToSort));
+        System.out.println("Time passed: " + timePassedMs + " ms");
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
@@ -252,6 +298,7 @@ public class Main {
 //        collections();
 //        classesAndInterfaces();
 //        files();
-        dynamicPolymorphism();
+//        dynamicPolymorphism();
+        sortingAlgorithms();
     }
 }
