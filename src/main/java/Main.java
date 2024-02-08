@@ -266,8 +266,18 @@ public class Main {
         System.out.println("Time passed: " + timePassedMs + " ms");
     }
 
+    private static String weirdExceptionsTest() {
+        try {
+            throw new RuntimeException("Something");
+        } catch (RuntimeException e) {
+            return "Caught";
+        } finally {
+            return "This should not return";
+        }
+    }
 
     private static void javaSwingGui() {
+        System.out.println(weirdExceptionsTest());
         ArraySortingGuiFrame guiFrame = new ArraySortingGuiFrame();
     }
 
