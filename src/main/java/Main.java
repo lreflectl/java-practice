@@ -1,4 +1,5 @@
 import arraySortingGui.ArraySortingGuiFrame;
+import javaX.Tracker;
 import oop.Car;
 import oop.SportCar;
 import oop.Vehicle;
@@ -281,6 +282,11 @@ public class Main {
         ArraySortingGuiFrame guiFrame = new ArraySortingGuiFrame();
     }
 
+    private static void javaXProfitTracker() {
+        Tracker profitTracker = new Tracker();
+        profitTracker.run();
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
@@ -292,6 +298,7 @@ public class Main {
 //        files();
 //        dynamicPolymorphism();
 //        sortingAlgorithms();
-        javaSwingGui();
+//        javaSwingGui();
+        javaXProfitTracker();
     }
 }
