@@ -1,5 +1,6 @@
 import arraySortingGui.ArraySortingGuiFrame;
 import javaX.Account;
+import javaX.Bank;
 import javaX.Tracker;
 import oop.Car;
 import oop.SportCar;
@@ -301,6 +302,11 @@ public class Main {
         account.getTransactionHistory();
     }
 
+    private static void javaXBank() {
+        Bank bank = new Bank();
+        bank.enterMenu();
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
@@ -314,6 +320,7 @@ public class Main {
 //        sortingAlgorithms();
 //        javaSwingGui();
 //        javaXProfitTracker();
-        javaXAccount();
+//        javaXAccount();
+        javaXBank();
     }
 }
