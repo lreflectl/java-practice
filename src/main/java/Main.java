@@ -1,4 +1,5 @@
 import arraySortingGui.ArraySortingGuiFrame;
+import javaX.Account;
 import javaX.Tracker;
 import oop.Car;
 import oop.SportCar;
@@ -287,6 +288,19 @@ public class Main {
         profitTracker.run();
     }
 
+    private static void javaXAccount() {
+        Account account = new Account("John");
+        account.deposit(100);
+        account.withdraw(10);
+        for (int i = 0; i < 13; i++) {
+            account.withdraw(i);
+        }
+        account.withdraw(300);
+        account.deposit(0);
+        account.calculateInterest(5);
+        account.getTransactionHistory();
+    }
+
     public static void main(String[] args) {
 //        dataPrimitives();
 //        userInputAndArithmeticOperations();
@@ -299,6 +313,7 @@ public class Main {
 //        dynamicPolymorphism();
 //        sortingAlgorithms();
 //        javaSwingGui();
-        javaXProfitTracker();
+//        javaXProfitTracker();
+        javaXAccount();
     }
 }
